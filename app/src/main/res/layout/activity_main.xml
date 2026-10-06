@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:padding="20dp"
+    android:padding="30dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -112,11 +112,12 @@
             <com.google.android.material.slider.Slider
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@id/sliderHeight"
+                android:id="@+id/sliderHeight"
                 android:layout_weight="0.1"
                 android:value="72"
                 android:valueTo="120"
                 android:valueFrom="40">
+
 
             </com.google.android.material.slider.Slider>
         </LinearLayout>
@@ -146,7 +147,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="176"
+                android:id="@+id/weightValue"
+                android:text="170"
                 android:textColor="@color/text"
                 android:textSize="52dp">
             </TextView>
@@ -156,26 +158,19 @@
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
                 android:orientation="horizontal">
-
-<<<<<<< HEAD
-                <ImageButton
-                    android:id="@+id/menysPes"
-                    android:layout_width="62dp"
-                    android:layout_height="62dp"
-                    android:src="@drawable/remove_24px">
-=======
                 <Button
                     style="?attr/materialIconButtonFilledStyle"
+                    android:id="@+id/weightLess"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/remove_24px"
                     app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Small"
                     />
->>>>>>> 0a307dbc2996d9741be70b671025c120ee4ffc95
 
 
                 <Button
                     style="?attr/materialIconButtonFilledStyle"
+                    android:id="@+id/weightMore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/add_24px"
@@ -213,6 +208,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/valueAge"
                 android:textSize="52dp"
                 android:textColor="@color/text"
                 android:text="19">
@@ -225,6 +221,7 @@
                     style="?attr/materialIconButtonFilledStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/lessAge"
                     app:icon="@drawable/remove_24px"
                     app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Small"
                     />
@@ -234,6 +231,7 @@
                     style="?attr/materialIconButtonFilledStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/moreAge"
                     app:icon="@drawable/add_24px"
                     app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Small"
                     />
