@@ -142,8 +142,6 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    text
-                    text
                     android:id="@+id/menysPes"
                     android:layout_width="62dp"
                     android:layout_height="62dp"
