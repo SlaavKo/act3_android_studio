@@ -1,5 +1,6 @@
 package com.example.activitat03
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -17,10 +18,10 @@ class MainActivity : AppCompatActivity() {
     var dona_selected: Boolean = false
     lateinit var card_home: MaterialCardView
     lateinit var card_dona: MaterialCardView
-    var alt: Int = 72
+    var alt: Int = 170
     lateinit var slider: Slider
     lateinit var heightValue: TextView
-    var pes: Int = 170
+    var pes: Int = 65
 
     lateinit var weightValue: TextView
     lateinit var lessWeight: Button
@@ -31,6 +32,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var ageValue: TextView
     lateinit var lessAge: Button
     lateinit var moreAge: Button
+
+    lateinit var calc: Button
+
+    val mainAct = this
+    val resAct = ResultActivity::class.java
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         moreWeight = findViewById<Button>(R.id.weightMore)
 
         lessWeight.setOnClickListener {
-            if(pes > 1) {
+            if(pes > 18) {
                 pes--
                 weightValue.text = pes.toString()
             }
@@ -107,7 +115,17 @@ class MainActivity : AppCompatActivity() {
             ageValue.text = edat.toString()
         }
 
+        calc = findViewById(R.id.calculate)
+        val intent = Intent(mainAct, resAct)
 
+        calc.setOnClickListener {
+            if(home_selected || dona_selected) {
+                var altM = alt / 100.0
+                val bmi = pes / (altM*altM)
+            intent.putExtra("bmi", bmi)
+                startActivity(intent)
+            }
+        }
 
 
     }

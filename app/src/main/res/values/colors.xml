@@ -7,4 +7,7 @@
     <color name="subText">#8D8E98</color>
     <color name="text">#FFFFFFFF</color>
     <color name="res">#5130A8</color>
+    <color name="normal">#24D876</color>
+    <color name="warning">#F5A623</color>
+    <color name="danger">#EB1555</color>
 </resources>
