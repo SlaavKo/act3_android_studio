@@ -7,8 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-import java.net.Proxy
 
 class ResultActivity : AppCompatActivity() {
 
@@ -16,6 +14,7 @@ class ResultActivity : AppCompatActivity() {
     lateinit var type: TextView
     lateinit var bmiValue: TextView
     lateinit var recalc: Button
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,12 +52,5 @@ class ResultActivity : AppCompatActivity() {
             finish()
         }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 }

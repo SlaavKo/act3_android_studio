@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var moreAge: Button
 
     lateinit var calc: Button
+    lateinit var err: TextView
 
     val mainAct = this
     val resAct = ResultActivity::class.java
@@ -84,51 +85,44 @@ class MainActivity : AppCompatActivity() {
         weightValue = findViewById<TextView>(R.id.weightValue)
         lessWeight = findViewById<Button>(R.id.weightLess)
         moreWeight = findViewById<Button>(R.id.weightMore)
-
         lessWeight.setOnClickListener {
-            if(pes > 18) {
+            if(pes > 1) {
                 pes--
                 weightValue.text = pes.toString()
             }
         }
-
         moreWeight.setOnClickListener {
             pes++
             weightValue.text = pes.toString()
         }
-
-        //ELS BOTONS D'EDAT
 
         ageValue = findViewById<TextView>(R.id.valueAge)
         lessAge = findViewById<Button>(R.id.lessAge)
         moreAge = findViewById<Button>(R.id.moreAge)
 
         lessAge.setOnClickListener {
-            if(edat > 1) {
+            if(edat > 18) {
                 edat--
                 ageValue.text = edat.toString()
             }
         }
-
         moreAge.setOnClickListener {
             edat++
             ageValue.text = edat.toString()
         }
-
         calc = findViewById(R.id.calculate)
+        err = findViewById(R.id.req)
         val intent = Intent(mainAct, resAct)
-
         calc.setOnClickListener {
             if(home_selected || dona_selected) {
-                var altM = alt / 100.0
+                err.text = ""
+                val altM = alt / 100.0
                 val bmi = pes / (altM*altM)
             intent.putExtra("bmi", bmi)
                 startActivity(intent)
+            } else {
+                err.text = "FALTA POSAR EL GÈNERE!"
             }
         }
-
-
     }
-
-
 }
