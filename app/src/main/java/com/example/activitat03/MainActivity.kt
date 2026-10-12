@@ -1,7 +1,7 @@
 package com.example.activitat03
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -14,10 +14,10 @@ import com.google.android.material.slider.Slider
 
 
 class MainActivity : AppCompatActivity() {
-    var home_selected: Boolean = false
-    var dona_selected: Boolean = false
-    lateinit var card_home: MaterialCardView
-    lateinit var card_dona: MaterialCardView
+    var homeSelected: Boolean = false
+    var donaSelected: Boolean = false
+    lateinit var cardHome: MaterialCardView
+    lateinit var cardDona: MaterialCardView
     var alt: Int = 170
     lateinit var slider: Slider
     lateinit var heightValue: TextView
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -55,36 +56,36 @@ class MainActivity : AppCompatActivity() {
 
         //LA PART DE SI ÉS HOME O DONA
 
-        card_home = findViewById<MaterialCardView>(R.id.seleccio_home)
-        card_dona = findViewById<MaterialCardView>(R.id.seleccio_dona)
-        card_home.setOnClickListener {
-            card_home.setCardBackgroundColor(getColor(R.color.selCard))
-            card_dona.setCardBackgroundColor(getColor(R.color.cardBack))
-            home_selected = true
-            dona_selected = false
+        cardHome = findViewById(R.id.seleccio_home)
+        cardDona = findViewById(R.id.seleccio_dona)
+        cardHome.setOnClickListener {
+            cardHome.setCardBackgroundColor(getColor(R.color.selCard))
+            cardDona.setCardBackgroundColor(getColor(R.color.cardBack))
+            homeSelected = true
+            donaSelected = false
         }
-        card_dona.setOnClickListener {
-            card_dona.setCardBackgroundColor(getColor(R.color.selCard))
-            card_home.setCardBackgroundColor(getColor(R.color.cardBack))
-            home_selected = false
-            dona_selected = true
+        cardDona.setOnClickListener {
+            cardDona.setCardBackgroundColor(getColor(R.color.selCard))
+            cardHome.setCardBackgroundColor(getColor(R.color.cardBack))
+            homeSelected = false
+            donaSelected = true
         }
 
         //EL SLIDER DE L'ALTURA
 
-        slider = findViewById<Slider>(R.id.sliderHeight)
-        heightValue = findViewById<TextView>(R.id.heightValue)
+        slider = findViewById(R.id.sliderHeight)
+        heightValue = findViewById(R.id.heightValue)
 
-        slider.addOnChangeListener { slider, value, bool ->
+        slider.addOnChangeListener { _, value, _ ->
             alt = value.toInt()
             heightValue.text = alt.toString()
         }
 
         //ELS BOTONS DE PES
 
-        weightValue = findViewById<TextView>(R.id.weightValue)
-        lessWeight = findViewById<Button>(R.id.weightLess)
-        moreWeight = findViewById<Button>(R.id.weightMore)
+        weightValue = findViewById(R.id.weightValue)
+        lessWeight = findViewById(R.id.weightLess)
+        moreWeight = findViewById(R.id.weightMore)
         lessWeight.setOnClickListener {
             if(pes > 1) {
                 pes--
@@ -96,9 +97,9 @@ class MainActivity : AppCompatActivity() {
             weightValue.text = pes.toString()
         }
 
-        ageValue = findViewById<TextView>(R.id.valueAge)
-        lessAge = findViewById<Button>(R.id.lessAge)
-        moreAge = findViewById<Button>(R.id.moreAge)
+        ageValue = findViewById(R.id.valueAge)
+        lessAge = findViewById(R.id.lessAge)
+        moreAge = findViewById(R.id.moreAge)
 
         lessAge.setOnClickListener {
             if(edat > 18) {
@@ -114,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         err = findViewById(R.id.req)
         val intent = Intent(mainAct, resAct)
         calc.setOnClickListener {
-            if(home_selected || dona_selected) {
+            if(homeSelected || donaSelected) {
                 err.text = ""
                 val altM = alt / 100.0
                 val bmi = pes / (altM*altM)
